@@ -19,7 +19,7 @@ body {
 img {
   @apply max-w-full h-auto;
   object-position: center;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .animate-toast-slide-in {

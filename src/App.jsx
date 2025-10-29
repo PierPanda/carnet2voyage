@@ -5,6 +5,7 @@ import StartPage from "./components/scenes/start-page.jsx";
 import Scene1Book from "./components/scenes/scene-1-book.jsx";
 import Scene2Door from "./components/scenes/scene-2-door.jsx";
 import Scene3Couloir from "./components/scenes/scene-3-couloir.jsx";
+import Scene6Classroom from "./components/scenes/scene-6-classroom.jsx";
 import Loader from "./components/loader.jsx";
 
 function App() {
@@ -57,6 +58,14 @@ function App() {
     return (
       <GameLayout onNavigate={navigateToScene}>
         <Scene3Couloir onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
+  if (currentScene === "salle-classe") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene6Classroom onNavigate={navigateToScene} />
       </GameLayout>
     );
   }
