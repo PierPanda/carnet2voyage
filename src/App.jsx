@@ -1,21 +1,75 @@
+import { useState } from "react";
 import "./App.css";
-import { InfoToastContainer } from "./components/InfoToast";
-import { showInfoToast } from "./utils/toastUtils.jsx";
-import { Icon } from "@iconify/react";
+import GameLayout from "./components/GameLayout";
+import StartPage from "./components/scenes/start-page.jsx";
+import Scene1Book from "./components/scenes/scene-1-book.jsx";
+import Scene2Door from "./components/scenes/scene-2-door.jsx";
+import Scene3Couloir from "./components/scenes/scene-3-couloir.jsx";
+import Loader from "./components/loader.jsx";
 
 function App() {
+  const [currentScene, setCurrentScene] = useState("home");
+  const [isLoading, setIsLoading] = useState(false);
+  const [targetScene, setTargetScene] = useState(null);
+
+  console.log("currentScene:", currentScene);
+
+  const navigateToScene = (sceneName, skipLoader = false) => {
+    if (skipLoader) {
+      setCurrentScene(sceneName);
+    } else {
+      setTargetScene(sceneName);
+      setIsLoading(true);
+    }
+  };
+
+  const handleLoadComplete = () => {
+    setIsLoading(false);
+    setCurrentScene(targetScene);
+    setTargetScene(null);
+  };
+
+  if (isLoading) {
+    return <Loader onLoadComplete={handleLoadComplete} />;
+  }
+
+  if (currentScene === "home") {
+    return <StartPage onStart={() => navigateToScene("chapitre-1", true)} />;
+  }
+
+  if (currentScene === "chapitre-1") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene1Book onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
+  if (currentScene === "portail") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene2Door onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
+  if (currentScene === "couloir") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene3Couloir onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen text-center text-3xl font-bold gap-6">
-      home
-      <button
-        className="fixed bottom-8 right-8 w-20 h-20 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 z-50 border-4 border-white hover:bg-white hover:text-gray-800"
-        onClick={() => showInfoToast("Ceci est un toast personnalisé !")}
-        aria-label="Afficher un toast"
-      >
-        <Icon icon="wpf:ask-question" width="38" height="38" />
-      </button>
-      <InfoToastContainer />
-    </div>
+    <GameLayout onNavigate={navigateToScene}>
+      <div className="flex items-center justify-center h-screen text-center">
+        <div className="text-black text-3xl font-ff-providence-sans-web-pro">
+          <p>Scène: {currentScene}</p>
+          <p className="text-lg mt-4">Contenu à venir...</p>
+        </div>
+      </div>
+    </GameLayout>
   );
 }
 
