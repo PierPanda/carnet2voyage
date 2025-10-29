@@ -11,10 +11,12 @@ export default function Scene3Couloir({ onNavigate }) {
 
   const handleCasierClick = () => {
     console.log("Casier cliqué");
+    alert("Casier cliqué - fonctionnalité à venir !");
   };
 
   const handleRackClick = () => {
     console.log("Rack cliqué");
+    alert("Rack cliqué - fonctionnalité à venir !");
   };
 
   return (
