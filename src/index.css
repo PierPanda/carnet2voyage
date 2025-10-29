@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+body {
+  @apply text-white bg-gray-800;
+}
+
+/* Toast animations */
+.animate-toast-slide-in {
+  animation: toastSlideIn 0.5s ease-out forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-toast-slide-out {
+  animation: toastSlideOut 0.4s ease-in forwards;
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
