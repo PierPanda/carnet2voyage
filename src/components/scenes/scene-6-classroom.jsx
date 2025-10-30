@@ -10,13 +10,15 @@ export default function Scene6Classroom({ onNavigate }) {
   };
 
   const handleTableauClick = () => {
-    alert("Zone Tableau cliquée");
-    // Navigation vers mini-jeu tableau à ajouter plus tard
+    if (onNavigate) {
+      onNavigate("blackboard-game");
+    }
   };
 
   const handleBureauClick = () => {
-    alert("Zone Bureau cliquée");
-    // Navigation vers mini-jeu bureau à ajouter plus tard
+    if (onNavigate) {
+      onNavigate("eraser-game");
+    }
   };
 
   const handleMonstreClick = () => {
