@@ -5,6 +5,8 @@ import StartPage from "./components/scenes/start-page.jsx";
 import Scene1Book from "./components/scenes/scene-1-book.jsx";
 import Scene2Door from "./components/scenes/scene-2-door.jsx";
 import Scene3Couloir from "./components/scenes/scene-3-couloir.jsx";
+import Scene4RackGame from "./components/scenes/scene-4-rack-game.jsx";
+import Scene5LockerGame from "./components/scenes/scene-5-locker-game.jsx";
 import Scene6Classroom from "./components/scenes/scene-6-classroom.jsx";
 import Loader from "./components/loader.jsx";
 
@@ -58,6 +60,22 @@ function App() {
     return (
       <GameLayout onNavigate={navigateToScene}>
         <Scene3Couloir onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
+  if (currentScene === "rack-game") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene4RackGame onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
+  if (currentScene === "locker-game") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene5LockerGame onNavigate={navigateToScene} />
       </GameLayout>
     );
   }

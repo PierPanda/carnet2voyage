@@ -1,6 +1,4 @@
 import couloirImage from "../../assets/scene-3/couloir-NB.png";
-// import porteClasse from "../../assets/scene-3/porte-sticker-nb.png";
-// import casier from "../../assets/scene-3/casier-sticke-nb.png";
 
 export default function Scene3Couloir({ onNavigate }) {
   const handlePorteClick = () => {
@@ -10,13 +8,15 @@ export default function Scene3Couloir({ onNavigate }) {
   };
 
   const handleCasierClick = () => {
-    console.log("Casier cliqué");
-    alert("Casier cliqué - fonctionnalité à venir !");
+    if (onNavigate) {
+      onNavigate("locker-game");
+    }
   };
 
   const handleRackClick = () => {
-    console.log("Rack cliqué");
-    alert("Rack cliqué - fonctionnalité à venir !");
+    if (onNavigate) {
+      onNavigate("rack-game");
+    }
   };
 
   return (
