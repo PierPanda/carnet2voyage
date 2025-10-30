@@ -1,6 +1,8 @@
 import couloirImage from "../../assets/scene-3/couloir-NB.png";
+import couloirImageColor from "../../assets/scene-3/couloir-color.png";
 
-export default function Scene3Couloir({ onNavigate }) {
+export default function Scene3Couloir({ onNavigate, miniGamesComplete }) {
+  const allGamesComplete = miniGamesComplete?.rackGame && miniGamesComplete?.lockerGame;
   const handlePorteClick = () => {
     if (onNavigate) {
       onNavigate("salle-classe");
@@ -23,9 +25,9 @@ export default function Scene3Couloir({ onNavigate }) {
     <div className="fixed inset-0 bg-white">
       {/* Image du couloir */}
       <img
-        src={couloirImage}
+        src={allGamesComplete ? couloirImageColor : couloirImage}
         alt="couloir"
-        className="absolute inset-0 w-full h-full object-contain"
+        className="absolute inset-0 w-full h-full object-contain transition-opacity duration-500"
       />
 
       {/* Zone tout à gauche - Rack */}

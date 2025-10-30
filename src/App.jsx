@@ -14,8 +14,19 @@ function App() {
   const [currentScene, setCurrentScene] = useState("home");
   const [isLoading, setIsLoading] = useState(false);
   const [targetScene, setTargetScene] = useState(null);
+  const [miniGamesComplete, setMiniGamesComplete] = useState({
+    rackGame: false,
+    lockerGame: false,
+  });
 
   console.log("currentScene:", currentScene);
+
+  const handleMiniGameComplete = (gameName) => {
+    setMiniGamesComplete((prev) => ({
+      ...prev,
+      [gameName]: true,
+    }));
+  };
 
   const navigateToScene = (sceneName, skipLoader = false) => {
     if (skipLoader) {
@@ -59,7 +70,10 @@ function App() {
   if (currentScene === "couloir") {
     return (
       <GameLayout onNavigate={navigateToScene}>
-        <Scene3Couloir onNavigate={navigateToScene} />
+        <Scene3Couloir
+          onNavigate={navigateToScene}
+          miniGamesComplete={miniGamesComplete}
+        />
       </GameLayout>
     );
   }
@@ -67,7 +81,10 @@ function App() {
   if (currentScene === "rack-game") {
     return (
       <GameLayout onNavigate={navigateToScene}>
-        <Scene4RackGame onNavigate={navigateToScene} />
+        <Scene4RackGame
+          onNavigate={navigateToScene}
+          onComplete={() => handleMiniGameComplete("rackGame")}
+        />
       </GameLayout>
     );
   }
@@ -75,7 +92,10 @@ function App() {
   if (currentScene === "locker-game") {
     return (
       <GameLayout onNavigate={navigateToScene}>
-        <Scene5LockerGame onNavigate={navigateToScene} />
+        <Scene5LockerGame
+          onNavigate={navigateToScene}
+          onComplete={() => handleMiniGameComplete("lockerGame")}
+        />
       </GameLayout>
     );
   }
