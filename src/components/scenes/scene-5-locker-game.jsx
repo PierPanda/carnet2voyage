@@ -22,12 +22,20 @@ export default function Scene5LockerGame({ onNavigate }) {
     }));
   };
 
+  const handleRetourCouloir = () => {
+    if (onNavigate) {
+      onNavigate("couloir");
+    }
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <img
         src={allBooksRemoved ? zoomeCasierDone : zoomCasierEmpty}
         alt="zoom casier"
-        className={`absolute top-1/2 ${allBooksRemoved ? 'left-1/2' : 'left-370'} -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500`}
+        className={`absolute top-1/2 ${
+          allBooksRemoved ? "left-1/2" : "left-370"
+        } -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500`}
       />
       <img
         src={calcul}
@@ -63,6 +71,17 @@ export default function Scene5LockerGame({ onNavigate }) {
         className="absolute inset-y-0 left-[55%] w-[10%] cursor-pointer"
         onClick={() => handleBookClick("grammaire")}
       />
+
+      {/* Bouton retour au couloir */}
+      <button
+        onClick={handleRetourCouloir}
+        className="absolute bottom-8 px-8 py-4 text-2xl font-ff-providence-sans-web-pro font-bold text-black bg-white border-4 border-black transition-all duration-300 hover:scale-110 hover:bg-black hover:text-white"
+        style={{
+          borderRadius: "255px 15px 225px 15px/15px 225px 15px 255px",
+        }}
+      >
+        Retour au couloir
+      </button>
     </div>
   );
 }
