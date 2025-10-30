@@ -8,6 +8,7 @@ import Scene3Couloir from "./components/scenes/scene-3-couloir.jsx";
 import Scene4RackGame from "./components/scenes/scene-4-rack-game.jsx";
 import Scene5LockerGame from "./components/scenes/scene-5-locker-game.jsx";
 import Scene6Classroom from "./components/scenes/scene-6-classroom.jsx";
+import Scene7ClassroomClockGame from "./components/scenes/scene-7-classroom-clock-game.jsx";
 import Loader from "./components/loader.jsx";
 
 function App() {
@@ -104,6 +105,14 @@ function App() {
     return (
       <GameLayout onNavigate={navigateToScene}>
         <Scene6Classroom onNavigate={navigateToScene} />
+      </GameLayout>
+    );
+  }
+
+  if (currentScene === "classroom-clock-game") {
+    return (
+      <GameLayout onNavigate={navigateToScene}>
+        <Scene7ClassroomClockGame onNavigate={navigateToScene} />
       </GameLayout>
     );
   }
