@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import zoomCasierEmpty from "../../assets/mini-games/casier/zoom-casier-vide.png";
 import zoomeCasierDone from "../../assets/mini-games/casier/zoom-casier-couleur.png";
 import calcul from "../../assets/mini-games/casier/calcul.png";
 import geometrie from "../../assets/mini-games/casier/géométrie.png";
 import grammaire from "../../assets/mini-games/casier/grammaire.png";
 
-export default function Scene5LockerGame({ onNavigate }) {
+export default function Scene5LockerGame({ onNavigate, onComplete }) {
   const [visibleBooks, setVisibleBooks] = useState({
     calcul: true,
     geometrie: true,
@@ -14,6 +14,12 @@ export default function Scene5LockerGame({ onNavigate }) {
 
   const allBooksRemoved =
     !visibleBooks.calcul && !visibleBooks.geometrie && !visibleBooks.grammaire;
+
+  useEffect(() => {
+    if (allBooksRemoved && onComplete) {
+      onComplete();
+    }
+  }, [allBooksRemoved, onComplete]);
 
   const handleBookClick = (bookName) => {
     setVisibleBooks((prev) => ({

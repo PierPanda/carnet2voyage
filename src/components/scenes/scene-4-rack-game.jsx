@@ -3,7 +3,7 @@ import rack from "../../assets/mini-games/porte-manteau/rack-nb.png";
 import rackPiece from "../../assets/mini-games/porte-manteau/rack-piece-nb.png";
 import rackDone from "../../assets/mini-games/porte-manteau/rack-color-done.png";
 
-export default function Scene4RackMiniGame({ onNavigate }) {
+export default function Scene4RackMiniGame({ onNavigate, onComplete }) {
   const [rotation, setRotation] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -14,6 +14,9 @@ export default function Scene4RackMiniGame({ onNavigate }) {
 
       if (newRotation >= 180) {
         setIsComplete(true);
+        if (onComplete) {
+          onComplete();
+        }
         console.log("Mini-jeu terminé !");
       }
     }
