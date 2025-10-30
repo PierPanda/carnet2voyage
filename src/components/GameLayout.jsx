@@ -1,63 +1,62 @@
-import BubbleMenu from "./BubbleMenu";
+// import BubbleMenu from "./BubbleMenu";
 import { BookMenu } from "./BookMenu";
-import { InfoToastContainer } from "./InfoToast";
 import { Icon } from "@iconify/react";
 import { showInfoToast } from "../utils/toastUtils.jsx";
 import Paper from "../assets/info-toast-bg.png";
 import ClickSpark from "../components/sparkling-cursor.jsx";
 
 export default function GameLayout({ children, onNavigate }) {
-  const menuItems = [
-    {
-      label: "Une école étrange",
-      href: "#etrange-ecole",
-      ariaLabel: "Chapitre 1 : Une école étrange",
-      rotation: -8,
-      hoverStyles: { bgColor: "#d97706", textColor: "#ffffff" },
-    },
-    {
-      label: "Le portail",
-      href: "#portail",
-      ariaLabel: "Chapitre 1 : Le portail",
-      rotation: 5,
-      hoverStyles: { bgColor: "#0891b2", textColor: "#ffffff" },
-    },
-    {
-      label: "Le couloir",
-      href: "#couloir",
-      ariaLabel: "Chapitre 1 : Le couloir",
-      rotation: -5,
-      hoverStyles: { bgColor: "#7c3aed", textColor: "#ffffff" },
-    },
-    {
-      label: "Salle de classe",
-      href: "#salle-classe",
-      ariaLabel: "Chapitre 1 : Salle de classe",
-      rotation: 8,
-      hoverStyles: { bgColor: "#059669", textColor: "#ffffff" },
-    },
-    {
-      label: "Tu m'attraperas pas",
-      href: "#chapitre-2",
-      ariaLabel: "Chapitre 2 : Tu m'attraperas pas",
-      rotation: -5,
-      hoverStyles: { bgColor: "#dc2626", textColor: "#ffffff" },
-    },
-    {
-      label: "Le ventre vide",
-      href: "#chapitre-3",
-      ariaLabel: "Chapitre 3 : Le ventre vide",
-      rotation: 5,
-      hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
-    },
-    {
-      label: "Fin",
-      href: "#fin",
-      ariaLabel: "Fin",
-      rotation: -8,
-      hoverStyles: { bgColor: "#2563eb", textColor: "#ffffff" },
-    },
-  ];
+  // const menuItems = [
+  //   {
+  //     label: "Une école étrange",
+  //     href: "#etrange-ecole",
+  //     ariaLabel: "Chapitre 1 : Une école étrange",
+  //     rotation: -8,
+  //     hoverStyles: { bgColor: "#d97706", textColor: "#ffffff" },
+  //   },
+  //   {
+  //     label: "Le portail",
+  //     href: "#portail",
+  //     ariaLabel: "Chapitre 1 : Le portail",
+  //     rotation: 5,
+  //     hoverStyles: { bgColor: "#0891b2", textColor: "#ffffff" },
+  //   },
+  //   {
+  //     label: "Le couloir",
+  //     href: "#couloir",
+  //     ariaLabel: "Chapitre 1 : Le couloir",
+  //     rotation: -5,
+  //     hoverStyles: { bgColor: "#7c3aed", textColor: "#ffffff" },
+  //   },
+  //   {
+  //     label: "Salle de classe",
+  //     href: "#salle-classe",
+  //     ariaLabel: "Chapitre 1 : Salle de classe",
+  //     rotation: 8,
+  //     hoverStyles: { bgColor: "#059669", textColor: "#ffffff" },
+  //   },
+  //   {
+  //     label: "Tu m'attraperas pas",
+  //     href: "#chapitre-2",
+  //     ariaLabel: "Chapitre 2 : Tu m'attraperas pas",
+  //     rotation: -5,
+  //     hoverStyles: { bgColor: "#dc2626", textColor: "#ffffff" },
+  //   },
+  //   {
+  //     label: "Le ventre vide",
+  //     href: "#chapitre-3",
+  //     ariaLabel: "Chapitre 3 : Le ventre vide",
+  //     rotation: 5,
+  //     hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+  //   },
+  //   {
+  //     label: "Fin",
+  //     href: "#fin",
+  //     ariaLabel: "Fin",
+  //     rotation: -8,
+  //     hoverStyles: { bgColor: "#2563eb", textColor: "#ffffff" },
+  //   },
+  // ];
 
   return (
     <ClickSpark
@@ -70,14 +69,14 @@ export default function GameLayout({ children, onNavigate }) {
       extraScale={1.2}
     >
       <div className="relative w-full h-screen">
-        <BubbleMenu
+        {/* <BubbleMenu
           logo={<Icon icon="mdi:compass" width="32" height="32" />}
           items={menuItems}
           menuAriaLabel="Menu de navigation"
           menuBg="#f59e0b"
           menuContentColor="#ffffff"
           backgroundImage={Paper}
-        />
+        /> */}
 
         <BookMenu onNavigate={onNavigate} />
 
@@ -88,8 +87,6 @@ export default function GameLayout({ children, onNavigate }) {
         >
           <Icon icon="wpf:ask-question" width="38" height="38" />
         </button>
-
-        <InfoToastContainer />
 
         <div className="w-full h-full">{children}</div>
       </div>

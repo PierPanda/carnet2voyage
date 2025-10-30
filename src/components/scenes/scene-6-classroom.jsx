@@ -3,25 +3,33 @@ import tableau from "../../assets/scene-6/tableau-sticker.png";
 import classroom from "../../assets/scene-6/classe-scene-nb.png";
 import monster from "../../assets/scene-6/monster-sticker.png";
 
-export default function Scene6Classroom() {
+export default function Scene6Classroom({ onNavigate }) {
+  const handleMaitresseClick = () => {
+    alert("Zone Maîtresse cliquée");
+    // Fonctionnalité maîtresse à ajouter plus tard
+  };
+
   const handleTableauClick = () => {
-    alert("Zone Tableau cliquée");
-    // Navigation vers mini-jeu tableau à ajouter plus tard
+    if (onNavigate) {
+      onNavigate("blackboard-game");
+    }
   };
 
   const handleBureauClick = () => {
-    alert("Zone Bureau cliquée");
-    // Navigation vers mini-jeu bureau à ajouter plus tard
-  };
-
-  const handleMaitresseClick = () => {
-    alert("Zone Maîtresse cliquée");
-    // Navigation vers mini-jeu maîtresse à ajouter plus tard
+    if (onNavigate) {
+      onNavigate("eraser-game");
+    }
   };
 
   const handleMonstreClick = () => {
     alert("Zone Monstre cliquée");
     // Fonctionnalité monstre à ajouter plus tard
+  };
+
+  const handleHorlogeClick = () => {
+    if (onNavigate) {
+      onNavigate("classroom-clock-game");
+    }
   };
 
   return (
@@ -48,7 +56,13 @@ export default function Scene6Classroom() {
         className="absolute inset-0 w-full h-full object-contain"
       />
 
-      {/* 4 zones cliquables */}
+      {/* Zones cliquables */}
+
+      {/* Zone horloge - Milieu haut (60% × 20%) */}
+      <div
+        className="absolute top-0 left-[20%] w-[60%] h-[25%] cursor-pointer z-10"
+        onClick={handleHorlogeClick}
+      ></div>
 
       {/* Zone extrême gauche - Maîtresse (20% × 100%) */}
       <div
